@@ -16,11 +16,12 @@ namespace wp_2020_11
     public partial class Form1 : Form
     {
         List<Image> list = new List<Image>();
-        int a , b ;
+        int playera , playerb ;
         int player1 = 0, player2 = 0;
         public Form1()
         {
             InitializeComponent();
+
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -40,12 +41,18 @@ namespace wp_2020_11
             list.Add(Resources._100);
 
 
+            richTextBox1.Text = "player1贏的次數" + player1;
+            richTextBox2.Text = "player2贏的次數" + player2;
+            pictureBox1.Image = list[13];
+            pictureBox2.Image = list[13];
+
+
         }
         private void button1_Click(object sender, EventArgs e)
         {
             int index = new Random().Next(13);//模擬隨機產生 一個值;
             pictureBox1.Image = list[index];
-            a = index+1;
+            playera = index+1;
 
         }
 
@@ -63,7 +70,7 @@ namespace wp_2020_11
         {
             int index2 = new Random().Next(13);//模擬隨機產生 一個值;
             pictureBox2.Image = list[index2];
-            b = index2+1;
+            playerb = index2+1;
             
         }
 
@@ -72,19 +79,19 @@ namespace wp_2020_11
         {
             
 
-            if (a > b)
+            if (playera > playerb)
             {
-                MessageBox.Show($"{a}>{b}", "P1贏了", MessageBoxButtons.OK);
+                MessageBox.Show($"{playera}>{playerb}", "P1贏了", MessageBoxButtons.OK);
                 player1 = player1 + 1;
             }
-            else if (a < b)
+            else if (playera < playerb)
             {
-                MessageBox.Show($"{b}>{a}", "P2贏了", MessageBoxButtons.OK);
+                MessageBox.Show($"{playerb}>{playera}", "P2贏了", MessageBoxButtons.OK);
                 player2 = player2 + 1;
             }
-            else if (a == b)
+            else if (playera == playerb)
             {
-                MessageBox.Show($"{b}={a}", "平手", MessageBoxButtons.OK);
+                MessageBox.Show($"{playerb}={playera}", "平手", MessageBoxButtons.OK);
             }
             richTextBox1.Text = "player1贏的次數" + player1 ;
             richTextBox2.Text = "player2贏的次數" + player2;
